@@ -53,19 +53,34 @@ public class CreateNewCharacter : MonoBehaviour {
 			newPlayer.PlayerName = playerName;//Creating the player name.
 			newPlayer.Stamina = newPlayer.PlayerClass.Stamina;
 			newPlayer.Strength = newPlayer.PlayerClass.Strength;
-			//Call the save info script to save All information above.
+
+            StoreNewPlayerInfo(); //Calling the function to store the information.
+            //Call the save info script to save All information above.
 			SaveInfo.SaveAllInformation ();
 
 
 
 			Debug.Log ("PlayerClass " + newPlayer.PlayerClass.CharacterClassName);
 		}
-			
-				
 
+
+        //test Button
+        if (GUILayout.Button("Load")) {
+            Application.LoadLevel("test");
+        }
+
+       
+      
 
 	}
-
+    //Function for storing the new player information
+    private void StoreNewPlayerInfo()
+    {
+        GameInfo.PlayerName = newPlayer.PlayerName;
+        GameInfo.PlayerLevel = newPlayer.PlayerLevel; 
+        GameInfo.Stamina = newPlayer.Stamina;
+        GameInfo.Strength = newPlayer.Strength;
+    }
 
 
 }
